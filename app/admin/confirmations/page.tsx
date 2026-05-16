@@ -74,9 +74,13 @@ export default function AdminConfirmations() {
   const handleSupprimer = async (id: number) => {
     if (!confirm('Confirmer la suppression ?')) return
     try {
-      await fetch('/api/listes/confirmations', { method: 'DELETE', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify({ id }) })
+      await fetch('/api/listes/confirmations', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ id }),
+      })
       charger()
-    } catch { alert('Erreur') }
+    } catch { alert('Erreur lors de la suppression') }
   }
 
   if (!isConnected) return null
@@ -87,6 +91,7 @@ export default function AdminConfirmations() {
         .form-input { width: 100%; padding: 12px 16px; border: 1.5px solid rgba(201,168,76,0.3); border-radius: 6px; font-family: Lato, sans-serif; font-size: 14px; color: #0D2B55; background: #FAF8F3; box-sizing: border-box; }
         .form-input:focus { outline: none; border-color: #C9A84C; background: #FFFFFF; }
         .form-select { width: 100%; padding: 12px 16px; border: 1.5px solid rgba(201,168,76,0.3); border-radius: 6px; font-family: Lato, sans-serif; font-size: 14px; color: #0D2B55; background: #FAF8F3; appearance: none; }
+        .form-select:focus { outline: none; border-color: #C9A84C; }
         .form-label { display: block; font-family: Cinzel, serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #0D2B55; margin-bottom: 6px; font-weight: 600; }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
         table { width: 100%; border-collapse: collapse; background: #FFFFFF; }
@@ -97,6 +102,7 @@ export default function AdminConfirmations() {
         tbody td { padding: 10px 16px; font-family: Lato, sans-serif; font-size: 13px; color: #0D2B55; }
         .delete-btn { background: #FFF0F0; color: #C9401A; border: 1px solid rgba(201,64,26,0.3); padding: 5px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; cursor: pointer; }
         .delete-btn:hover { background: #C9401A; color: #FFFFFF; }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
       `}</style>
 
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
