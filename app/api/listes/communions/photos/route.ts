@@ -13,14 +13,10 @@ const verifierToken = (request: NextRequest) => {
 }
 
 export async function POST(request: NextRequest) {
-  if (!verifierToken(request)) {
-    return NextResponse.json({ message: 'Non autorisé' }, { status: 401 })
-  }
+  if (!verifierToken(request)) return NextResponse.json({ message: 'Non autorisé' }, { status: 401 })
   try {
     const { communionId, url } = await request.json()
-    const photo = await prisma.baptemePhoto.create({
-      data: { communionId: parseInt(communionId), url }
-    })
+    const photo = await prisma.communionPhoto.create({ data: { communionId: parseInt(communionId), url } })
     return NextResponse.json(photo, { status: 201 })
   } catch (error) {
     return NextResponse.json({ message: 'Erreur serveur', error }, { status: 500 })
@@ -28,9 +24,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-  if (!verifierToken(request)) {
-    return NextResponse.json({ message: 'Non autorisé' }, { status: 401 })
-  }
+  if (!verifierToken(request)) return NextResponse.json({ message: 'Non autorisé' }, { status: 401 })
   try {
     const { id } = await request.json()
     await prisma.communionPhoto.delete({ where: { id: parseInt(id) } })
