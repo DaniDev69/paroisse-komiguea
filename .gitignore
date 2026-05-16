@@ -1,3 +1,4 @@
 public/videos/ 
 public/sacrements/ 
-node_modules
+.next/ 
+node_modules/ 
