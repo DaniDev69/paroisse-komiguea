@@ -1,0 +1,153 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model InscriptionFidele {
+  id        Int      @id @default(autoincrement())
+  nom       String
+  prenom    String
+  fonction  String?
+  age       Int
+  cevb      String?
+  mouvement String?
+  createdAt DateTime @default(now())
+  @@map("inscriptions_fideles")
+}
+
+model InscriptionCatechumene {
+  id        Int      @id @default(autoincrement())
+  nom       String
+  prenom    String
+  classe    String
+  langue    String?
+  annee     String?
+  telephone String?
+  createdAt DateTime @default(now())
+  @@map("inscriptions_catechumenes")
+}
+
+model InscriptionCatechiste {
+  id        Int      @id @default(autoincrement())
+  nom       String
+  prenom    String
+  fonction  String?
+  telephone String
+  annee     String?
+  createdAt DateTime @default(now())
+  @@map("inscriptions_catechistes")
+}
+
+model Bapteme {
+  id            Int            @id @default(autoincrement())
+  nom           String
+  prenom        String
+  categorie     String
+  annee         Int
+  pereCelebrant String?
+  photo         String?
+  photos        BaptemePhoto[]
+  createdAt     DateTime       @default(now())
+  @@map("baptemes")
+}
+
+model BaptemePhoto {
+  id        Int      @id @default(autoincrement())
+  baptemeId Int
+  bapteme   Bapteme  @relation(fields: [baptemeId], references: [id], onDelete: Cascade)
+  url       String
+  createdAt DateTime @default(now())
+  @@map("bapteme_photos")
+}
+
+model Communion {
+  id            Int              @id @default(autoincrement())
+  nom           String
+  prenom        String
+  categorie     String
+  annee         Int
+  pereCelebrant String?
+  photo         String?
+  photos        CommunionPhoto[]
+  createdAt     DateTime         @default(now())
+  @@map("communions")
+}
+
+model CommunionPhoto {
+  id          Int       @id @default(autoincrement())
+  communionId Int
+  communion   Communion @relation(fields: [communionId], references: [id], onDelete: Cascade)
+  url         String
+  createdAt   DateTime  @default(now())
+  @@map("communion_photos")
+}
+
+model Confirmation {
+  id              Int                @id @default(autoincrement())
+  nom             String
+  prenom          String
+  categorie       String
+  annee           Int
+  pereCelebrant   String?
+  photo           String?
+  photos          ConfirmationPhoto[]
+  createdAt       DateTime           @default(now())
+  @@map("confirmations")
+}
+
+model ConfirmationPhoto {
+  id             Int          @id @default(autoincrement())
+  confirmationId Int
+  confirmation   Confirmation @relation(fields: [confirmationId], references: [id], onDelete: Cascade)
+  url            String
+  createdAt      DateTime     @default(now())
+  @@map("confirmation_photos")
+}
+
+model Mariage {
+  id            Int            @id @default(autoincrement())
+  nomEpoux      String
+  prenomEpoux   String
+  nomEpouse     String
+  prenomEpouse  String
+  categorie     String
+  annee         Int
+  pereCelebrant String?
+  photo         String?
+  photos        MariagePhoto[]
+  createdAt     DateTime       @default(now())
+  @@map("mariages")
+}
+
+model MariagePhoto {
+  id        Int      @id @default(autoincrement())
+  mariageId Int
+  mariage   Mariage  @relation(fields: [mariageId], references: [id], onDelete: Cascade)
+  url       String
+  createdAt DateTime @default(now())
+  @@map("mariage_photos")
+}
+
+model MessageContact {
+  id        Int      @id @default(autoincrement())
+  nom       String
+  email     String?
+  telephone String?
+  sujet     String?
+  message   String   @db.Text
+  lu        Boolean  @default(false)
+  createdAt DateTime @default(now())
+  @@map("messages_contact")
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  @@map("admins")
+}
