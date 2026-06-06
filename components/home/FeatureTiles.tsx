@@ -11,7 +11,7 @@ export default function FeatureTiles() {
     { 
       title: 'Mariages', 
       bg: 'linear-gradient(135deg, #1A2E0D 0%, #2D5018 100%)',
-      image: '/images/mariagee.jpeg',
+      image: '/images/mariagee.jpg',
       href: '/culte/mariage',
     },
     { 
@@ -91,7 +91,7 @@ export default function FeatureTiles() {
                 alt={tile.title}
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                style={{ objectFit: 'cover', opacity: 0.75 }}
+                style={{ objectFit: 'cover', objectPosition: 'center top', opacity: 0.85 }}
               />
 
               {/* PATTERN */}

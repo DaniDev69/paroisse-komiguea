@@ -29,7 +29,7 @@ const pretres = [
   },
   {
     id: 4,
-    nom: 'Père Patrik SABI SIKA',
+    nom: 'Père Patrick SABI SIKA',
     periode: '2022 — aujourd\'hui',
     role: 'Curé actuel',
     desc: 'Il développa les œuvres sociales de la paroisse, créant des groupes de prière, des associations et renforçant la vie communautaire.',
@@ -162,7 +162,7 @@ export default function HistoirePage() {
             {pretres.map((pretre) => (
               <div key={pretre.id} className="pretre-card">
                 <div className="pretre-photo">
-                  <Image src={pretre.image} alt={pretre.nom} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: 'cover' }}/>
+                  <Image src={pretre.image} alt={pretre.nom} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: 'cover', objectPosition: 'center top', opacity: 0.85 }}/>
                 </div>
                 <div style={{ padding: '24px' }}>
                   <p style={{ fontFamily: 'Cinzel, serif', fontSize: '11px', letterSpacing: '1.5px', color: '#C9A84C', textTransform: 'uppercase', marginBottom: '8px' }}>{pretre.periode}</p>

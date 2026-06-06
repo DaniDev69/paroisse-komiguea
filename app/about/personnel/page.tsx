@@ -3,17 +3,27 @@ import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 
 const personnel = [
-  { nom: 'Père Patrik SABI SIKA', role: 'Curé de la Paroisse', image: '/images/Danidevv.png', desc: 'Responsable pastoral de la paroisse Notre-Dame d\'Assomption de Komiguéa.' },
-  { nom: 'Père Pierre DAMADO', role: 'Vicaire', image: '/images/Danidev.png', desc: 'Accompagne le curé dans les célébrations et l\'animation pastorale.' },
+  { nom: 'Père Patrick SABI SIKA', role: 'Curé de la Paroisse', image: '/images/cure.jpeg', desc: 'Responsable pastoral de la paroisse Notre Dame de  l\'Assomption de Komiguéa.' },
+  { nom: 'Père Jean Luc', role: 'Vicaire', image: '/images/Danidev.png', desc: 'Accompagne le curé dans les célébrations et l\'animation pastorale.' },
+  { nom: 'Père Atanase', role: 'Vicaire', image: '/images/chef.jpg', desc: 'Accompagne le curé dans les célébrations et l\'animation pastorale.' },
 ]
 
-const conseil = [
-  { nom: 'Jean BIOKOU', role: 'Président du Conseil Paroissial', icon: '👤' },
+const conseilParoissial = [
+  { nom: 'Clément OROU GOURA', role: 'Vice président du Conseil Paroissial', icon: '👤' },
   { nom: 'Marie SAKA', role: 'Secrétaire', icon: '👤' },
   { nom: 'Paul GOSSOU', role: 'Trésorier', icon: '👤' },
   { nom: 'Anne KORA', role: 'Responsable Liturgie', icon: '👤' },
   { nom: 'Thomas DOKO', role: 'Responsable Catéchèse', icon: '👤' },
   { nom: 'Claire BANI', role: 'Responsable Jeunesse', icon: '👤' },
+]
+
+const conseilEconomique = [
+  { nom: 'Pierre GANSOU', role: 'Président du Conseil Économique', icon: '👤' },
+  { nom: 'Élise KORA', role: 'Secrétaire', icon: '👤' },
+  { nom: 'Simon DAKO', role: 'Trésorier', icon: '👤' },
+  { nom: 'Bernadette SABI', role: 'Membre', icon: '👤' },
+  { nom: 'Mathieu BANI', role: 'Membre', icon: '👤' },
+  { nom: 'Agnès GOSSOU', role: 'Membre', icon: '👤' },
 ]
 
 export default function PersonnelPage() {
@@ -35,15 +45,15 @@ export default function PersonnelPage() {
         {/* PRÊTRES */}
         <section style={{ background: '#FFFFFF', padding: '80px 40px' }}>
           <style>{`
-            .pretres-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 800px; margin: 0 auto; }
+            .pretres-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1100px; margin: 0 auto; }
             .pretre-card { background: #FAF8F3; border-radius: 12px; overflow: hidden; border: 1px solid rgba(201,168,76,0.2); box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: transform 0.3s; }
             .pretre-card:hover { transform: translateY(-4px); }
-            .pretre-photo { height: 200px; position: relative; background: linear-gradient(135deg, #0D2B55 0%, #1A4480 100%); }
+            .pretre-photo { height: 220px; position: relative; background: linear-gradient(135deg, #0D2B55 0%, #1A4480 100%); }
             .conseil-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
             .conseil-card { background: #FFFFFF; border-radius: 10px; padding: 24px; border: 1px solid rgba(201,168,76,0.2); text-align: center; transition: transform 0.3s; }
             .conseil-card:hover { transform: translateY(-4px); }
-            @media (max-width: 700px) { .pretres-grid { grid-template-columns: 1fr; } .conseil-grid { grid-template-columns: repeat(2, 1fr); } }
-            @media (max-width: 480px) { .conseil-grid { grid-template-columns: 1fr; } }
+            @media (max-width: 900px) { .pretres-grid { grid-template-columns: repeat(2, 1fr); } .conseil-grid { grid-template-columns: repeat(2, 1fr); } }
+            @media (max-width: 480px) { .pretres-grid { grid-template-columns: 1fr; } .conseil-grid { grid-template-columns: 1fr; } }
           `}</style>
 
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
@@ -55,7 +65,7 @@ export default function PersonnelPage() {
             {personnel.map((p) => (
               <div key={p.nom} className="pretre-card">
                 <div className="pretre-photo">
-                  <Image src={p.image} alt={p.nom} fill sizes="50vw" style={{ objectFit: 'cover' }}/>
+                  <Image src={p.image} alt={p.nom} fill sizes="33vw" style={{ objectFit: 'cover', objectPosition: 'center top' }}/>
                 </div>
                 <div style={{ padding: '24px' }}>
                   <p style={{ fontFamily: 'Lato, sans-serif', fontSize: '10px', letterSpacing: '1.5px', textTransform: 'uppercase', color: '#C9A84C', marginBottom: '8px' }}>{p.role}</p>
@@ -67,7 +77,7 @@ export default function PersonnelPage() {
           </div>
         </section>
 
-        {/* CONSEIL */}
+        {/* CONSEIL PAROISSIAL */}
         <section style={{ background: '#FAF8F3', padding: '80px 40px' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <p style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: '#C9A84C', marginBottom: '12px' }}>Gouvernance</p>
@@ -75,9 +85,27 @@ export default function PersonnelPage() {
           </div>
 
           <div className="conseil-grid">
-            {conseil.map((c) => (
+            {conseilParoissial.map((c) => (
               <div key={c.nom} className="conseil-card">
                 <div style={{ width: '56px', height: '56px', background: 'linear-gradient(135deg, #2A0D55 0%, #4A1A80 100%)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', margin: '0 auto 14px' }}>{c.icon}</div>
+                <h3 style={{ fontFamily: 'Cinzel, serif', fontSize: '14px', fontWeight: 600, color: '#0D2B55', marginBottom: '6px' }}>{c.nom}</h3>
+                <p style={{ fontFamily: 'Lato, sans-serif', fontSize: '11px', color: '#C9A84C', letterSpacing: '0.5px', textTransform: 'uppercase' }}>{c.role}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CONSEIL ÉCONOMIQUE */}
+        <section style={{ background: '#FFFFFF', padding: '80px 40px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <p style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: '#C9A84C', marginBottom: '12px' }}>Finances</p>
+            <h2 style={{ fontFamily: 'Cinzel, serif', fontSize: '28px', fontWeight: 400, color: '#0D2B55' }}>Conseil Économique</h2>
+          </div>
+
+          <div className="conseil-grid">
+            {conseilEconomique.map((c) => (
+              <div key={c.nom} className="conseil-card">
+                <div style={{ width: '56px', height: '56px', background: 'linear-gradient(135deg, #4A2E08 0%, #8A5A18 100%)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', margin: '0 auto 14px' }}>{c.icon}</div>
                 <h3 style={{ fontFamily: 'Cinzel, serif', fontSize: '14px', fontWeight: 600, color: '#0D2B55', marginBottom: '6px' }}>{c.nom}</h3>
                 <p style={{ fontFamily: 'Lato, sans-serif', fontSize: '11px', color: '#C9A84C', letterSpacing: '0.5px', textTransform: 'uppercase' }}>{c.role}</p>
               </div>

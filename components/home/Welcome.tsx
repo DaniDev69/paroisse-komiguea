@@ -30,10 +30,10 @@ export default function Welcome() {
 
         <div className="welcome-img">
           <Image
-            src="/images/design.png"
+            src="/images/Autel.jpeg"
             alt="Photo de la paroisse"
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 760px) 100vw, 50vw"
             style={{ objectFit: 'cover' }}
           />
         </div>

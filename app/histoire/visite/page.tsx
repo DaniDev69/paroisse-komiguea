@@ -6,12 +6,12 @@ import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 
 const photos = [
-  { id: 1, src: '/images/eglise.jpg', titre: 'Façade de l\'Église', desc: 'Vue extérieure de la Paroisse  Notre Dame de l\'Assomption de Komiguéa' },
-  { id: 2, src: '/images/Autel.jpg', titre: 'L\'Autel', desc: 'L\'autel principal où sont célébrées les messes' },
-  { id: 3, src: '/images/eglise_vue.jpg', titre: 'Intérieur de l\'Église', desc: 'La nef principale et les bancs des fidèles' },
-  { id: 4, src: '/images/chorale.jpg', titre: 'La Communauté', desc: 'Notre belle communauté paroissiale réunie' },
+  { id: 1, src: '/images/histoire.jpg', titre: 'Façade de l\'Église', desc: 'Vue extérieure de la Paroisse  Notre Dame de l\'Assomption de Komiguéa' },
+  { id: 2, src: '/images/Autel.jpeg', titre: 'L\'Autel', desc: 'L\'autel principal où sont célébrées les messes' },
+  { id: 3, src: '/images/vueeglise.jpeg', titre: 'Intérieur de l\'Église', desc: 'La nef principale et les bancs des fidèles' },
+  { id: 4, src: '/images/chorale.jpeg', titre: 'La Chorale', desc: 'Notre chorale Bariba' },
   { id: 5, src: '/images/mariagee.jpg', titre: 'Célébration de Mariage', desc: 'Une belle cérémonie de mariage dans notre église' },
-  { id: 6, src: '/images/histoire.jpg', titre: 'Moments Historiques', desc: 'Les grands moments de l\'histoire de notre paroisse' },
+  { id: 6, src: '/images/paroisse.jpg', titre: 'Chémin de croix', desc: 'Le grand chemin de croix du vendredi saint' },
 ]
 
 export default function VisiteVirtuellePage() {
